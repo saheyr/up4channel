@@ -1,50 +1,92 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UP 4 Channel - تحميل التطبيق</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: linear-gradient(135deg, #0066ff, #00ccff);
-      color: white;
-      text-align: center;
-      padding: 50px;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 30px;
-      display: inline-block;
-      max-width: 400px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    img {
-      width: 100px;
-      border-radius: 20%;
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: white;
-      color: #0066ff;
-      text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UP 4 Channel - تحميل التطبيق</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Almarai', sans-serif;
+    background: linear-gradient(135deg, #1a73e8, #00bcd4);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .container {
+    background: rgba(255,255,255,0.1);
+    border-radius: 25px;
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+  }
+  .app-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+  h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: 700;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+  }
+  .download-btn {
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a73e8;
+    background-color: #fff;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+  .download-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-3px);
+  }
+  @media(max-width: 450px){
+    .container { padding: 30px 20px; }
+    h1 { font-size: 24px; }
+    p { font-size: 15px; }
+    .download-btn { font-size: 16px; padding: 12px 28px; }
+  }
+</style>
 </head>
 <body>
-  <div class="card">
-    <img src="https://i.imgur.com/3R0QGfM.png" alt="App Icon">
+  <div class="container">
+    <!-- أيقونة التطبيق -->
+    <img class="app-icon" src="https://i.imgur.com/3R0QGfM.png" alt="UP 4 Channel">
+
+    <!-- عنوان التطبيق -->
     <h1>UP 4 Channel</h1>
-    <p>تطبيق يساعدك على اكتشاف ومشاركة القنوات بسهولة وسرعة 🔥</p>
-    <a class="button" href="https://github.com/اسمك/app/releases/download/v1.0/app.apk">
+
+    <!-- وصف مختصر -->
+    <p>اكتشف القنوات بسرعة وسهولة! حمّل التطبيق الآن وابدأ تجربة رائعة 🔥</p>
+
+    <!-- زر التحميل -->
+    <a class="download-btn" href="https://github.com/saheyr/up4channel/releases/download/v1.0/app.apk">
       ⬇️ تحميل التطبيق الآن
     </a>
-    <p>الإصدار 1.0 - مجاني 100%</p>
+
+    <!-- ملاحظة الإصدار -->
+    <p style="margin-top:15px; font-size:14px; opacity:0.8;">الإصدار 1.0 - مجاني 100%</p>
   </div>
 </body>
 </html>
