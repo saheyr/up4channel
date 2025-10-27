@@ -17,12 +17,12 @@
     font-family: 'Tajawal', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
-    /* التعديلات هنا: إزالة min-height: 100vh وتغيير ال padding لتضييق المساحة حول البطاقة */
+    /* إعادة min-height: 100vh وتغيير ال padding إلى قيمة أقل */
     min-height: 100vh; /* الاحتفاظ بها للتوسيط العمودي */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px 20px; /* زيادة الهامش العلوي والسفلي للـ body */
+    padding: 20px 20px; /* تقليل الهامش العلوي والسفلي للسماح للبطاقة بملء الشاشة أكثر */
     position: relative;
     overflow-x: hidden;
   }
@@ -89,9 +89,10 @@
     backdrop-filter: blur(20px);
     border-radius: 30px;
     padding: 40px 30px;
-    max-width: 480px;
-    min-width: 320px; /* تثبيت العرض الأدنى لضمان عدم التكبير/التصغير غير المرغوب به */
-    width: 100%;
+    /* رفع max-width قليلاً وجعل min-width أصغر لمرونة أكبر */
+    max-width: 520px; 
+    min-width: 300px; 
+    width: 90%; /* استخدام 90% من عرض الشاشة لتبدو أعرض قليلاً */
     text-align: center;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
                 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
@@ -307,7 +308,7 @@
   .star:nth-child(4) { top: 30%; left: 70%; animation-delay: 1.5s; }
   .star:nth-child(5) { top: 60%; left: 90%; animation-delay: 0.5s; }
 
-  /* ❌ تم حذف استعلامات @media هنا لضمان ثبات الأحجام وعدم التكبير/التصغير غير المرغوب به */
+  /* تم حذف استعلامات @media لضمان ثبات الأحجام */
 </style>
 </head>
 <body>
@@ -365,7 +366,7 @@
       </div>
       <div class="info-item">
         <span class="info-label">الحجم</span>
-        <span class="info-value">mb.20</span>
+        <span class="info-value">26.mb</span>
       </div>
       <div class="info-item">
         <span class="info-label">السعر</span>
