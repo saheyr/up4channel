@@ -17,11 +17,12 @@
     font-family: 'Tajawal', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
-    min-height: 100vh;
+    /* التعديلات هنا: إزالة min-height: 100vh وتغيير ال padding لتضييق المساحة حول البطاقة */
+    min-height: 100vh; /* الاحتفاظ بها للتوسيط العمودي */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 50px 20px; /* زيادة الهامش العلوي والسفلي للـ body */
     position: relative;
     overflow-x: hidden;
   }
@@ -89,6 +90,7 @@
     border-radius: 30px;
     padding: 40px 30px;
     max-width: 480px;
+    min-width: 320px; /* تثبيت العرض الأدنى لضمان عدم التكبير/التصغير غير المرغوب به */
     width: 100%;
     text-align: center;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
@@ -305,54 +307,7 @@
   .star:nth-child(4) { top: 30%; left: 70%; animation-delay: 1.5s; }
   .star:nth-child(5) { top: 60%; left: 90%; animation-delay: 0.5s; }
 
-  /* استجابة للشاشات الصغيرة */
-  @media (max-width: 600px) {
-    .container {
-      padding: 40px 25px;
-      border-radius: 25px;
-    }
-
-    h1 {
-      font-size: 28px;
-    }
-
-    .subtitle {
-      font-size: 16px;
-    }
-
-    .app-icon {
-      width: 110px;
-      height: 110px;
-    }
-
-    .download-btn {
-      font-size: 18px;
-      padding: 16px 35px;
-    }
-
-    .feature {
-      padding: 12px 15px;
-    }
-
-    .feature-text {
-      font-size: 14px;
-    }
-  }
-
-  @media (max-width: 400px) {
-    .container {
-      padding: 30px 20px;
-    }
-
-    h1 {
-      font-size: 24px;
-    }
-
-    .download-btn {
-      font-size: 16px;
-      padding: 14px 30px;
-    }
-  }
+  /* ❌ تم حذف استعلامات @media هنا لضمان ثبات الأحجام وعدم التكبير/التصغير غير المرغوب به */
 </style>
 </head>
 <body>
@@ -410,7 +365,7 @@
       </div>
       <div class="info-item">
         <span class="info-label">الحجم</span>
-        <span class="info-value">26.mb</span>
+        <span class="info-value">mb.26</span>
       </div>
       <div class="info-item">
         <span class="info-label">السعر</span>
@@ -420,3 +375,4 @@
   </div>
 </body>
 </html>
+
