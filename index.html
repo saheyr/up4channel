@@ -14,228 +14,112 @@
   }
 
   body {
-    /* إضافة خط عربي احتياطي تحسباً لفشل تحميل خط Tajawal */
-    font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Tajawal', sans-serif;
+    background: radial-gradient(circle at 30% 30%, #7a6ff0, #5a3b9c);
     color: #fff;
-    
-    /* ضمان ملء الشاشة بالكامل */
-    width: 100vw; 
+    width: 100vw;
     height: 100vh;
-    
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 0;
+    overflow: hidden;
     position: relative;
-    
-    /* إلغاء السكرول نهائياً لمنع ظهور الفراغات */
-    overflow: hidden; 
   }
 
-  /* خلفية متحركة - تم زيادة الحجم لضمان التغطية */
-  body::before {
-    content: '';
+  /* خلفية إضافية بسيطة وثابتة */
+  .background-overlay {
     position: absolute;
-    top: -50%;
-    left: -50%;
-    /* التعديل: زيادة الحجم إلى 300% لضمان تغطية جميع الأبعاد عند الحركة */
-    width: 300%; 
-    height: 300%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: moveBackground 20s linear infinite;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    opacity: 0.25;
     z-index: 0;
-    
-    /* التعديل: التأكد من عدم تجاوز هذا العنصر لطبقة body */
-    pointer-events: none;
   }
 
-  @keyframes moveBackground {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(150px, 150px); } /* زيادة قيمة الانتقال لتجنب تكرار النمط */
-  }
-
-  /* دوائر الخلفية */
-  .bg-circle {
+  /* ظل بسيط لمنح العمق */
+  .overlay-gradient {
     position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    animation: float 6s ease-in-out infinite;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.1), rgba(0,0,0,0.5));
     z-index: 0;
-    pointer-events: none; /* لمنع تفاعلها مع الماوس */
   }
 
-  .circle1 {
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    right: -100px;
-    animation-delay: 0s;
-  }
-
-  .circle2 {
-    width: 200px;
-    height: 200px;
-    bottom: 15%;
-    left: -50px;
-    animation-delay: 2s;
-  }
-
-  .circle3 {
-    width: 150px;
-    height: 150px;
-    top: 60%;
-    right: 10%;
-    animation-delay: 4s;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-30px) rotate(5deg); }
-  }
-
+  /* البطاقة الكبيرة */
   .container {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    border-radius: 30px;
-    
-    /* زيادة الطول وتقليل العرض */
-    padding: 60px 25px; /* زيادة ال padding العلوي والسفلي لتبدو أطول */
-    max-width: 380px; /* تقليل max-width لتبدو أضيق (هذا هو القياس الأساسي) */
-    
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
-                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
     position: relative;
     z-index: 1;
-    animation: slideUp 0.6s ease-out;
-    
-    /* لضمان توسيطها بشكل جيد عمودياً حتى لو كانت طويلة */
-    align-self: center;
-  }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    width: 90%;
+    max-width: 480px;
+    min-height: 80vh;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 32px;
+    backdrop-filter: blur(18px);
+    padding: 60px 30px;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
   }
 
   /* أيقونة التطبيق */
   .icon-wrapper {
     position: relative;
-    display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   .app-icon {
-    width: 100px;
-    height: 100px;
-    border-radius: 24px;
+    width: 110px;
+    height: 110px;
+    border-radius: 25px;
     object-fit: cover;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-    transition: transform 0.4s ease;
-    
-    /* Fallback للعرض في حال فشل تحميل الصورة */
-    background-color: #764ba2; 
-    /* تم إزالة "content: 'UP';" من هذا الكلاس لأنه خاص بعنصر <img/> الذي لا يعرض content */
-  }
-  
-  /* إضافة محتوى احتياطي للصورة في حالة فشلها */
-  .app-icon:not([src])::after {
-      content: "UP";
-      color: #fff;
-      font-size: 32px;
-      font-weight: 900;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+    border: 4px solid rgba(255,255,255,0.25);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    background-color: #6c4fc0;
   }
 
-
-  .icon-wrapper:hover .app-icon {
-    transform: scale(1.05) rotate(2deg);
-  }
-
-  /* شارة جديد */
   .badge {
     position: absolute;
     top: -8px;
-    right: -8px;
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    color: #fff;
-    padding: 6px 12px;
+    right: -10px;
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    padding: 6px 14px;
     border-radius: 20px;
     font-size: 12px;
     font-weight: 700;
-    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    box-shadow: 0 3px 10px rgba(245, 87, 108, 0.4);
   }
 
   h1 {
     font-size: 28px;
     font-weight: 900;
-    margin-bottom: 12px;
-    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #ffffff, #dcdcdc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 
   .subtitle {
     font-size: 16px;
-    font-weight: 300;
-    margin-bottom: 20px;
-    opacity: 0.95;
-    line-height: 1.6;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 30px;
   }
 
-  /* المميزات */
   .features {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 25px 0;
     text-align: right;
+    margin-bottom: 30px;
   }
 
   .feature {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .feature:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateX(-5px);
   }
 
   .feature-icon {
-    font-size: 20px;
-    flex-shrink: 0;
+    font-size: 18px;
   }
 
   .feature-text {
@@ -243,196 +127,80 @@
     font-weight: 500;
   }
 
-  /* زر التحميل */
   .download-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 15px 35px;
-    font-size: 17px;
-    font-weight: 700;
-    color: #667eea;
-    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
-    text-decoration: none;
+    display: inline-block;
+    background: linear-gradient(135deg, #fff, #f8f9fa);
+    color: #5a3b9c;
+    font-weight: 800;
     border-radius: 50px;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-    margin-top: 15px;
-  }
-
-  .download-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(102, 126, 234, 0.1);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-
-  .download-btn:hover::before {
-    width: 300px;
-    height: 300px;
+    padding: 15px 35px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    margin-top: 10px;
   }
 
   .download-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    background: #fff;
   }
 
-  .download-btn:active {
-    transform: translateY(-1px);
-  }
-
-  .btn-text {
-    position: relative;
-    z-index: 1;
-  }
-
-  /* معلومات الإصدار */
   .version-info {
-    margin-top: 25px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 40px;
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 15px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 20px;
+    font-size: 13px;
   }
 
   .info-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .info-label {
-    font-size: 13px;
-    opacity: 0.8;
-    margin-bottom: 5px;
+    text-align: center;
   }
 
   .info-value {
-    font-size: 16px;
     font-weight: 700;
+    margin-top: 4px;
   }
 
-  /* تأثيرات إضافية */
-  .star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 3s ease-in-out infinite;
-  }
-
-  @keyframes twinkle {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-  }
-
-  .star:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-  .star:nth-child(2) { top: 40%; left: 80%; animation-delay: 1s; }
-  .star:nth-child(3) { top: 70%; left: 20%; animation-delay: 2s; }
-  .star:nth-child(4) { top: 30%; left: 70%; animation-delay: 1.5s; }
-  .star:nth-child(5) { top: 60%; left: 90%; animation-delay: 0.5s; }
-
-  /* استجابة للشاشات الصغيرة */
+  /* للهاتف */
   @media (max-width: 600px) {
     .container {
       padding: 50px 20px;
       border-radius: 25px;
-      max-width: 90%; /* نجعله أضيق قليلاً في الجوال */
+      max-width: 95%;
     }
-    h1 { font-size: 26px; }
-    .subtitle { font-size: 15px; }
-    .feature-text { font-size: 13px; }
-    .download-btn { font-size: 16px; }
   }
-
-  /* تحديد حجم البطاقة على الشاشات الأكبر */
-  @media (min-width: 601px) {
-      .container {
-          /* زيادة العرض قليلاً على الشاشات الكبيرة لتبدو أفضل كـ "بطاقة" */
-          max-width: 450px; 
-          /* زيادة الارتفاع قليلاً للمحتوى يبدو أطول */
-          padding: 80px 40px; 
-      }
-  }
-
 </style>
 </head>
 <body>
-  
-  <div class="bg-circle circle1"></div>
-  <div class="bg-circle circle2"></div>
-  <div class="bg-circle circle3"></div>
 
-  
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
+  <div class="background-overlay"></div>
+  <div class="overlay-gradient"></div>
 
   <div class="container">
-    
     <div class="icon-wrapper">
-      <!-- تأكد من وجود صورة "Icon.png" في نفس مجلد ملف index.html -->
       <img class="app-icon" src="Icon.png" alt="UP 4 Channel">
       <span class="badge">جديد</span>
     </div>
 
-    
     <h1>UP 4 Channel</h1>
-
-    
     <p class="subtitle">اكتشف عالماً من القنوات المميزة بسرعة وسهولة فائقة! 🎯</p>
 
-    
     <div class="features">
-      <div class="feature">
-        <span class="feature-icon">⚡</span>
-        <span class="feature-text">سريع وسهل الاستخدام</span>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🎨</span>
-        <span class="feature-text">تصميم عصري وجذاب</span>
-      </div>
-      <div class="feature">
-        <span class="feature-icon">🔒</span>
-        <span class="feature-text">آمن ومجاني 100%</span>
-      </div>
+      <div class="feature"><span class="feature-icon">⚡</span><span class="feature-text">سريع وسهل الاستخدام</span></div>
+      <div class="feature"><span class="feature-icon">🎨</span><span class="feature-text">تصميم عصري وجذاب</span></div>
+      <div class="feature"><span class="feature-icon">🔒</span><span class="feature-text">آمن ومجاني 100%</span></div>
     </div>
 
-    
     <a class="download-btn" href="https://github.com/saheyr/up4channel/releases/download/V1.0.2/UP.4.Channel.apk">
-      <span class="btn-text">⬇️ تحميل التطبيق الآن</span>
+      ⬇️ تحميل التطبيق الآن
     </a>
 
-    
     <div class="version-info">
-      <div class="info-item">
-        <span class="info-label">الإصدار</span>
-        <span class="info-value">1.0.2</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">الحجم</span>
-        <span class="info-value">26.gb</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">السعر</span>
-        <span class="info-value">مجاني</span>
-      </div>
+      <div class="info-item"><div class="info-label">الإصدار</div><div class="info-value">1.0.2</div></div>
+      <div class="info-item"><div class="info-label">الحجم</div><div class="info-value">26.GB</div></div>
+      <div class="info-item"><div class="info-label">السعر</div><div class="info-value">مجاني</div></div>
     </div>
   </div>
+
 </body>
 </html>
-
