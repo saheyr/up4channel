@@ -27,7 +27,7 @@
     position: relative;
   }
 
-  /* خلفية إضافية بسيطة وثابتة */
+  /* خلفية ثابتة */
   .background-overlay {
     position: absolute;
     inset: 0;
@@ -36,33 +36,37 @@
     z-index: 0;
   }
 
-  /* ظل بسيط لمنح العمق */
+  /* طبقة تدرج ناعمة لإضافة عمق */
   .overlay-gradient {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top right, rgba(255,255,255,0.1), rgba(0,0,0,0.5));
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.1), rgba(0,0,0,0.6));
     z-index: 0;
   }
 
-  /* البطاقة الكبيرة */
+  /* البطاقة الرئيسية */
   .container {
     position: relative;
     z-index: 1;
     width: 90%;
     max-width: 480px;
-    min-height: 80vh;
+    min-height: 85vh; /* لجعلها أكبر قليلاً */
     background: rgba(255, 255, 255, 0.12);
     border-radius: 32px;
     backdrop-filter: blur(18px);
     padding: 60px 30px;
     text-align: center;
     box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* يضمن توسيط المحتوى داخل البطاقة */
   }
 
   /* أيقونة التطبيق */
   .icon-wrapper {
     position: relative;
     margin-bottom: 25px;
+    align-self: center;
   }
 
   .app-icon {
@@ -166,6 +170,7 @@
     .container {
       padding: 50px 20px;
       border-radius: 25px;
+      min-height: 80vh;
       max-width: 95%;
     }
   }
@@ -197,7 +202,7 @@
 
     <div class="version-info">
       <div class="info-item"><div class="info-label">الإصدار</div><div class="info-value">1.0.2</div></div>
-      <div class="info-item"><div class="info-label">الحجم</div><div class="info-value">26.GB</div></div>
+      <div class="info-item"><div class="info-label">الحجم</div><div class="info-value">26.MB</div></div>
       <div class="info-item"><div class="info-label">السعر</div><div class="info-value">مجاني</div></div>
     </div>
   </div>
