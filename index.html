@@ -14,7 +14,8 @@
   }
 
   body {
-    font-family: 'Tajawal', sans-serif;
+    /* إضافة خط عربي احتياطي تحسباً لفشل تحميل خط Tajawal */
+    font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
     min-height: 100vh;
@@ -24,7 +25,7 @@
     padding: 20px;
     position: relative;
     
-    /* التعديل 1: إلغاء السكرول نهائياً */
+    /* إلغاء السكرول نهائياً */
     overflow: hidden; 
   }
 
@@ -90,9 +91,9 @@
     backdrop-filter: blur(20px);
     border-radius: 30px;
     
-    /* التعديل 2: زيادة الطول وتقليل العرض */
-    padding: 60px 25px; /* زيادة ال padding العلوي والسفلي (60px) لتبدو أطول */
-    max-width: 380px; /* تقليل max-width (380px) لتبدو أضيق */
+    /* زيادة الطول وتقليل العرض */
+    padding: 60px 25px; /* زيادة ال padding العلوي والسفلي لتبدو أطول */
+    max-width: 380px; /* تقليل max-width لتبدو أضيق (هذا هو القياس الأساسي) */
     
     width: 100%;
     text-align: center;
@@ -101,6 +102,9 @@
     position: relative;
     z-index: 1;
     animation: slideUp 0.6s ease-out;
+    
+    /* لضمان توسيطها بشكل جيد عمودياً حتى لو كانت طويلة */
+    align-self: center;
   }
 
   @keyframes slideUp {
@@ -129,6 +133,15 @@
     border: 4px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
     transition: transform 0.4s ease;
+    
+    /* Fallback للعرض في حال فشل تحميل الصورة */
+    background-color: #764ba2; 
+    content: "UP"; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 900;
   }
 
   .icon-wrapper:hover .app-icon {
@@ -315,14 +328,22 @@
     .container {
       padding: 50px 20px;
       border-radius: 25px;
-      /* لضمان عدم تجاوز العرض */
-      max-width: 90%;
+      max-width: 90%; /* نجعله أضيق قليلاً في الجوال */
     }
-    /* تقليل حجم الخطوط قليلاً على الجوالات لضمان عدم حدوث scroll */
     h1 { font-size: 26px; }
     .subtitle { font-size: 15px; }
     .feature-text { font-size: 13px; }
     .download-btn { font-size: 16px; }
+  }
+
+  /* التعديل الجديد: تحديد حجم البطاقة على الشاشات الأكبر */
+  @media (min-width: 601px) {
+      .container {
+          /* زيادة العرض قليلاً على الشاشات الكبيرة لتبدو أفضل كـ "بطاقة" */
+          max-width: 450px; 
+          /* زيادة الارتفاع قليلاً للمحتوى يبدو أطول */
+          padding: 80px 40px; 
+      }
   }
 
 </style>
@@ -343,6 +364,7 @@
   <div class="container">
     
     <div class="icon-wrapper">
+      <!-- تأكد من وجود صورة "Icon.png" في نفس مجلد ملف index.html -->
       <img class="app-icon" src="Icon.png" alt="UP 4 Channel">
       <span class="badge">جديد</span>
     </div>
@@ -382,7 +404,7 @@
       </div>
       <div class="info-item">
         <span class="info-label">الحجم</span>
-        <span class="info-value">26,19 م.ب</span>
+        <span class="info-value">26.mb</span>
       </div>
       <div class="info-item">
         <span class="info-label">السعر</span>
