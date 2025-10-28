@@ -17,14 +17,15 @@
     font-family: 'Tajawal', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
-    /* إعادة min-height: 100vh وتغيير ال padding إلى قيمة أقل */
-    min-height: 100vh; /* الاحتفاظ بها للتوسيط العمودي */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 20px; /* تقليل الهامش العلوي والسفلي للسماح للبطاقة بملء الشاشة أكثر */
+    padding: 20px;
     position: relative;
-    overflow-x: hidden;
+    
+    /* التعديل 1: إلغاء السكرول نهائياً */
+    overflow: hidden; 
   }
 
   /* خلفية متحركة */
@@ -88,11 +89,12 @@
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(20px);
     border-radius: 30px;
-    padding: 40px 30px;
-    /* رفع max-width قليلاً وجعل min-width أصغر لمرونة أكبر */
-    max-width: 520px; 
-    min-width: 300px; 
-    width: 90%; /* استخدام 90% من عرض الشاشة لتبدو أعرض قليلاً */
+    
+    /* التعديل 2: زيادة الطول وتقليل العرض */
+    padding: 60px 25px; /* زيادة ال padding العلوي والسفلي (60px) لتبدو أطول */
+    max-width: 380px; /* تقليل max-width (380px) لتبدو أضيق */
+    
+    width: 100%;
     text-align: center;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
                 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
@@ -308,16 +310,30 @@
   .star:nth-child(4) { top: 30%; left: 70%; animation-delay: 1.5s; }
   .star:nth-child(5) { top: 60%; left: 90%; animation-delay: 0.5s; }
 
-  /* تم حذف استعلامات @media لضمان ثبات الأحجام */
+  /* استجابة للشاشات الصغيرة */
+  @media (max-width: 600px) {
+    .container {
+      padding: 50px 20px;
+      border-radius: 25px;
+      /* لضمان عدم تجاوز العرض */
+      max-width: 90%;
+    }
+    /* تقليل حجم الخطوط قليلاً على الجوالات لضمان عدم حدوث scroll */
+    h1 { font-size: 26px; }
+    .subtitle { font-size: 15px; }
+    .feature-text { font-size: 13px; }
+    .download-btn { font-size: 16px; }
+  }
+
 </style>
 </head>
 <body>
-  <!-- دوائر الخلفية -->
+  
   <div class="bg-circle circle1"></div>
   <div class="bg-circle circle2"></div>
   <div class="bg-circle circle3"></div>
 
-  <!-- نجوم متلألئة -->
+  
   <div class="star"></div>
   <div class="star"></div>
   <div class="star"></div>
@@ -325,19 +341,19 @@
   <div class="star"></div>
 
   <div class="container">
-    <!-- أيقونة التطبيق مع شارة -->
+    
     <div class="icon-wrapper">
       <img class="app-icon" src="Icon.png" alt="UP 4 Channel">
       <span class="badge">جديد</span>
     </div>
 
-    <!-- عنوان التطبيق -->
+    
     <h1>UP 4 Channel</h1>
 
-    <!-- وصف مختصر -->
+    
     <p class="subtitle">اكتشف عالماً من القنوات المميزة بسرعة وسهولة فائقة! 🎯</p>
 
-    <!-- المميزات -->
+    
     <div class="features">
       <div class="feature">
         <span class="feature-icon">⚡</span>
@@ -353,12 +369,12 @@
       </div>
     </div>
 
-    <!-- زر التحميل -->
+    
     <a class="download-btn" href="https://github.com/saheyr/up4channel/releases/download/V1.0.2/UP.4.Channel.apk">
       <span class="btn-text">⬇️ تحميل التطبيق الآن</span>
     </a>
 
-    <!-- معلومات الإصدار -->
+    
     <div class="version-info">
       <div class="info-item">
         <span class="info-label">الإصدار</span>
@@ -366,7 +382,7 @@
       </div>
       <div class="info-item">
         <span class="info-label">الحجم</span>
-        <span class="info-value">26.mb</span>
+        <span class="info-value">26,19 م.ب</span>
       </div>
       <div class="info-item">
         <span class="info-label">السعر</span>
